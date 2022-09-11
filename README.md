@@ -1,5 +1,4 @@
 # begin-react
-===
 props를 통해 컴포넌트에게 값 전달하기
 ---
 props는 properties의 줄임말이다. 우리가 어떤한 값을 컴포넌트에게 전달해줘야 할 때, props를 사용한다.
