@@ -1,3 +1,11 @@
+# REACT-FUNC-CLASS-STYLE-CODING
+useEffect
+---
+어떻게 하면 렌더링 관련 작업을 처리하는 FuncComp 함수형 컴포넌트가 실행된 후에 추가로 필요한 작업을 처리하게 할 수 있을까이다. 이때 사용하는 것이 바로 리액트의 useEffect이다.   
+useEffect는 함수 컴포넌트를 반환하기 전에 호출하면 된다. useEffect 함수의 첫 번째 인자로는 함수가 들어와야 한다.   
+useEffect라는 훅은 웹 페이지가 처음으로 렌더링됐을 때 실행되고, 그 다음에 render가 실행될 때마다 실행된다는 것을 알 수 있다.
+
+
 # begin-react
 props를 통해 컴포넌트에게 값 전달하기
 ---
