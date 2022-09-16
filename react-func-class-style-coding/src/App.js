@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import logo from "./logo.svg";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 
 function App() {
@@ -12,20 +11,38 @@ function App() {
   );
 }
 
+var funcStyle = "color:blue";
+var funcId = 0;
 function FuncComp(props) {
   var numberState = useState(props.initNumber);
   var number = numberState[0];
   var setNumber = numberState[1];
-  console.log("numberState", numberState);
+
+  var [date, setDate] = useState(new Date().toString());
+
+  //side effect
+  useEffect(function () {
+    console.log("%cfunc => useEffect" + ++funcId, funcStyle);
+    document.title = number + " : " + date;
+  });
+  console.log("%cfunc => render" + ++funcId, funcStyle);
   return (
     <div className="container">
       <h2>function style component</h2>
       <p>Number : {number}</p>
+      <p>Date : {date}</p>
       <input
         type="button"
         value="random"
         onClick={function () {
           setNumber(Math.random());
+        }}
+      />
+      <input
+        type="button"
+        value="date"
+        onClick={() => {
+          setDate(new Date().toString());
         }}
       />
     </div>
@@ -35,18 +52,27 @@ function FuncComp(props) {
 class ClassComp extends React.Component {
   state = {
     number: this.props.initNumber,
+    date: new Date().toString(),
   };
   render() {
     return (
       <div className="container">
         <h2>class style component</h2>
         <p>Number : {this.state.number}</p>
+        <p>date : {this.state.date}</p>
         <input
           type="button"
           value="random"
           onClick={function () {
             this.setState({ number: Math.random() });
           }.bind(this)}
+        />
+        <input
+          type="button"
+          value="date"
+          onClick={() => {
+            this.setState({ date: new Date().toString() });
+          }}
         />
       </div>
     );
