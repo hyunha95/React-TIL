@@ -6,7 +6,7 @@ import PracticeApp from "./PracticeApp";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    {/* <App /> */}
-    <PracticeApp />
+    <App />
+    {/* <PracticeApp /> */}
   </React.StrictMode>
 );
