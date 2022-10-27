@@ -3,20 +3,26 @@ import Todo from "./Todo";
 import React, { useState } from "react";
 import { Container, List, Paper } from "@mui/material";
 import AddTodo from "./AddTodo";
+import { useEffect } from "react";
 
 function App() {
-  const [items, setItems] = useState([
-    {
-      id: "0",
-      title: "Hello World 1",
-      done: true,
-    },
-    {
-      id: "1",
-      title: "Hello World 2",
-      done: true,
-    },
-  ]);
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    const requestOptions = {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    };
+
+    fetch("http://localhost:8080/todo", requestOptions)
+      .then((response) => response.json())
+      .then(
+        (response) => {
+          setItems(response.data);
+        },
+        (error) => {}
+      );
+  }, []);
 
   const addItem = (item) => {
     item.id = "ID-" + items.length; // key를 위한 id
@@ -26,11 +32,27 @@ function App() {
     console.log("items : ", items);
   };
 
+  const deleteItem = (item) => {
+    // 삭제할 아이템을 찾는다.
+    const newItems = items.filter((e) => e.id !== item.id);
+    // 삭제할 이이템을 제외한 아이템을 다시 배열에 저장한다.
+    setItems([...newItems]);
+  };
+
+  const editItem = () => {
+    setItems([...items]);
+  };
+
   let todoItems = items.length > 0 && (
     <Paper style={{ margin: 16 }}>
       <List>
         {items.map((item) => (
-          <Todo item={item} key={item.id} />
+          <Todo
+            item={item}
+            key={item.id}
+            editItem={editItem}
+            deleteItem={deleteItem}
+          />
         ))}
       </List>
     </Paper>
