@@ -40,7 +40,7 @@ const AddTodo = (props) => {
       </Grid>
       <Grid xs={1} md={1} item>
         <Button
-          fullWIdth
+          fullWidth
           style={{ height: "100%" }}
           color="secondary"
           variant="outlined"
