@@ -57,19 +57,79 @@ const InputBar = styled.input`
  */
 function Calculator() {
     // state
-    const [value, setValue] = useState<string>("");
+    const [inputValue, setInputValue] = useState<string>("0");
+    const [hasOperator, setHasOperator] = useState<boolean>(false);
+    const [hasPoint, setHasPoint] = useState<boolean>(false);
 
     // event
     const onAddNumber = (num: number) => {
         const strValue = num.toString();
 
-        setValue((prevState) => prevState + strValue);
+        if (inputValue.startsWith("0") && inputValue.charAt(1) !== ".") {
+            setInputValue((prevState) => prevState.substring(1));
+        }
+        setInputValue((prevState) => prevState + strValue);
+
+        setHasOperator(false);
     };
 
-    const onAllClear = () => setValue("");
+    const onAllClear = () => {
+        setHasOperator(false);
+        setHasPoint(false);
+        setInputValue("0");
+    };
 
     const onDelete = () => {
-        setValue((prevValue) => prevValue.slice(0, -1));
+        setHasOperator(false);
+        setHasPoint(false);
+        setInputValue((prevValue) =>
+            prevValue.length === 1 ? "0" : prevValue.slice(0, -1)
+        );
+    };
+
+    const onAddPoint = () => {
+        if (hasPoint) {
+            return;
+        }
+        setInputValue((prevValue) => prevValue + ".");
+        setHasPoint(true);
+    };
+
+    const onPlus = () => {
+        if (hasOperator) {
+            return;
+        }
+        setInputValue((prevValue) => prevValue + "+");
+        setHasOperator(true);
+    };
+
+    const onMinus = () => {
+        if (hasOperator) {
+            return;
+        }
+        setInputValue((prevValue) => prevValue + "-");
+        setHasOperator(true);
+    };
+
+    const onMultiply = () => {
+        if (hasOperator) {
+            return;
+        }
+        setInputValue((prevValue) => prevValue + "*");
+        setHasOperator(true);
+    };
+
+    const onDivide = () => {
+        if (hasOperator) {
+            return;
+        }
+        setInputValue((prevValue) => prevValue + "/");
+        setHasOperator(true);
+    };
+
+    const onEqual = () => {
+        setInputValue((prevValue) => eval(prevValue));
+        setHasOperator(true);
     };
 
     return (
@@ -77,27 +137,27 @@ function Calculator() {
             <h1>Calculator</h1>
             <hr />
             <MainContainer>
-                <InputBar value={value} />
+                <InputBar value={inputValue} />
                 <ButtonContainer>
                     <Button onClick={onAllClear}>AC</Button>
                     <Button onClick={onDelete}>DEL</Button>
                     <CalButton>%</CalButton>
-                    <CalButton>÷</CalButton>
+                    <CalButton onClick={onDivide}>÷</CalButton>
                     <Button onClick={() => onAddNumber(7)}>7</Button>
                     <Button onClick={() => onAddNumber(8)}>8</Button>
                     <Button onClick={() => onAddNumber(9)}>9</Button>
-                    <CalButton>×</CalButton>
+                    <CalButton onClick={onMultiply}>×</CalButton>
                     <Button onClick={() => onAddNumber(4)}>4</Button>
                     <Button onClick={() => onAddNumber(5)}>5</Button>
                     <Button onClick={() => onAddNumber(6)}>6</Button>
-                    <CalButton>-</CalButton>
+                    <CalButton onClick={onMinus}>-</CalButton>
                     <Button onClick={() => onAddNumber(1)}>1</Button>
                     <Button onClick={() => onAddNumber(2)}>2</Button>
                     <Button onClick={() => onAddNumber(3)}>3</Button>
-                    <CalButton>+</CalButton>
+                    <CalButton onClick={onPlus}>+</CalButton>
                     <ZeroButton onClick={() => onAddNumber(0)}>0</ZeroButton>
-                    <Button>.</Button>
-                    <CalButton>=</CalButton>
+                    <Button onClick={onAddPoint}>.</Button>
+                    <CalButton onClick={onEqual}>=</CalButton>
                 </ButtonContainer>
             </MainContainer>
         </>
