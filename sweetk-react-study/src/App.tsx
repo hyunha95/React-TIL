@@ -1,8 +1,9 @@
 import { ChangeEvent, useState } from "react";
 import Input from "@/components/form/Input";
 import Counter from "@/components/layout/Counter";
-import Timer from "./components/LiveWatch";
-import Calculator from "./components/Calculator";
+import Timer from "@/components/LiveWatch";
+import Calculator from "@/components/Calculator";
+import TodoList from "@/components/layout/TodoLIst";
 
 /**
  * @description 루트 컴포넌트
@@ -25,14 +26,11 @@ function App() {
 				<Contents title="Contents" />
 				<Footer title="Footer" /> */}
 
-            <Input type="file" value={value} onChange={onChange} />
-
+            {/* <Input type="file" value={value} onChange={onChange} />
             <Counter />
             <Timer />
-            <br />
-            <br />
-            <br />
-            <Calculator />
+            <Calculator /> */}
+            <TodoList />
         </>
     );
 }
