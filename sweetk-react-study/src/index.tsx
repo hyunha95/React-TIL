@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "@/App";
+import { RouterProvider } from "react-router-dom";
+
+import router from "@/router/router";
 // 경로에 @는 src에서 시작한다는 의미이다.
 
 const root = ReactDOM.createRoot(
@@ -8,6 +10,6 @@ const root = ReactDOM.createRoot(
 );
 root.render(
     <React.StrictMode>
-        <App />
+        <RouterProvider router={router} />
     </React.StrictMode>
 );
