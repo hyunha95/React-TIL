@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import {ChangeEvent, useState} from "react";
 import Input from "@/components/form/Input";
 import Counter from "@/components/layout/Counter";
 import Timer from "@/components/LiveWatch";
@@ -30,7 +30,7 @@ function App() {
             <Counter />
             <Timer />
             <Calculator /> */}
-            <TodoList />
+            <TodoList/>
         </>
     );
 }
