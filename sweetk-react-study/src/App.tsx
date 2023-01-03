@@ -1,25 +1,42 @@
+<<<<<<< HEAD
 import {ChangeEvent, useState} from "react";
 import Input from "@/components/form/Input";
 import Counter from "@/components/layout/Counter";
 import Timer from "@/components/LiveWatch";
 import Calculator from "@/components/Calculator";
 import TodoList from "@/components/layout/TodoLIst";
+=======
+import { useLocation, useNavigate } from "react-router-dom";
+
+import styled from "styled-components";
+import Header from "@/components/layout/Header";
+import Sidebar from "@/components/layout/Sidebar";
+import Contents from "@/components/layout/Contents";
+import { useEffect } from "react";
+
+const BodyWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+`;
+>>>>>>> 3a7c8af43e77e73bdfcf086e5d5c9f7553454f41
 
 /**
  * @description 루트 컴포넌트
  */
 function App() {
-    // state
-    const [value, setValue] = useState<string>("");
+    // router-info
+    const location = useLocation();
+    const navigate = useNavigate();
 
-    // event
-    const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setValue(e.target.value);
-    };
+    // useEffect(() => {
+    //     console.log(location);
+    //     navigate("counter");
+    // }, []);
 
-    // view
     return (
         <>
+<<<<<<< HEAD
             {/* string 이외의 타입은 {}를 사용한다. */}
             {/* <Header title="Header" description="study" company="sweetk" />
 				<Sidebar title="Sidebar" />
@@ -31,8 +48,14 @@ function App() {
             <Timer />
             <Calculator /> */}
             <TodoList/>
+=======
+            <Header />
+            <BodyWrapper>
+                <Sidebar />
+                <Contents />
+            </BodyWrapper>
+>>>>>>> 3a7c8af43e77e73bdfcf086e5d5c9f7553454f41
         </>
     );
 }
-
 export default App;

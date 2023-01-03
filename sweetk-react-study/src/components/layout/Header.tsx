@@ -1,21 +1,18 @@
-type Props = {
-    title?: string;
-    description: string;
-    company: string;
-};
-
+import styled from "styled-components";
+const Wrapper = styled.header`
+    padding: 20px;
+    background-color: #1e90ff;
+    color: #fff;
+`;
 /**
- * @description 헤더 컴포넌트
+ * @description Header 컴포넌트
  * @see [https://jsdoc.app/]
  */
-function Header({ title, description, company }: Props) {
+function Header() {
     return (
-        <>
-            <h1>{title}</h1>
-            <h1>{description}</h1>
-            <h1>{company}</h1>
-        </>
+        <Wrapper>
+            <h1>React Study</h1>
+        </Wrapper>
     );
 }
-
 export default Header;
