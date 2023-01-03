@@ -1,25 +1,9 @@
-<<<<<<< HEAD
 import {ChangeEvent, useState} from "react";
 import Input from "@/components/form/Input";
 import Counter from "@/components/layout/Counter";
 import Timer from "@/components/LiveWatch";
 import Calculator from "@/components/Calculator";
 import TodoList from "@/components/layout/TodoLIst";
-=======
-import { useLocation, useNavigate } from "react-router-dom";
-
-import styled from "styled-components";
-import Header from "@/components/layout/Header";
-import Sidebar from "@/components/layout/Sidebar";
-import Contents from "@/components/layout/Contents";
-import { useEffect } from "react";
-
-const BodyWrapper = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-`;
->>>>>>> 3a7c8af43e77e73bdfcf086e5d5c9f7553454f41
 
 /**
  * @description 루트 컴포넌트
