@@ -5,9 +5,23 @@ const Button = styled.button`
     background: white;
     width: 80px;
     height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
 
     & > img {
         margin-bottom: 10px;
+        filter: invert(50%) sepia(0%) saturate(112%) hue-rotate(221deg)
+            brightness(84%) contrast(74%);
+    }
+
+    & > span {
+        font-size: 12px;
+        color: #717171;
+        min-width: 80px;
     }
 `;
 
@@ -15,7 +29,7 @@ function CategoryItem({ title, src }) {
     return (
         <Button>
             <img width="24" height="24" src={src} alt="" />
-            <div>{title}</div>
+            <span>{title}</span>
         </Button>
     );
 }

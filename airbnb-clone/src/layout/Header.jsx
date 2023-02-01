@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const WrapHeader = styled.div`
-    margin: 40px 80px;
+    margin: 20px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
