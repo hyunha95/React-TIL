@@ -25,10 +25,15 @@ const Button = styled.button`
     }
 `;
 
+const Img = styled.img`
+    width: 24px;
+    height: 24px;
+`;
+
 function CategoryItem({ title, src }) {
     return (
         <Button>
-            <img width="24" height="24" src={src} alt="" />
+            <Img src={src} alt="" />
             <span>{title}</span>
         </Button>
     );
