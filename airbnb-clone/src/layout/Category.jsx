@@ -1,5 +1,4 @@
 import CategoryItem from "./CategoryItem";
-import "./../../src/style.css";
 
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
@@ -7,7 +6,7 @@ import styled from "styled-components";
 const CategoryWrap = styled.div`
     display: flex;
     align-items: center;
-    margin: 0px auto 0px 0px;
+    margin: 0px auto;
 `;
 
 const CategoryItemWrap = styled.div`
@@ -16,6 +15,7 @@ const CategoryItemWrap = styled.div`
     align-items: center;
     overflow-x: scroll;
     white-space: nowrap;
+    gap: 25px;
 
     &::-webkit-scrollbar {
         display: none;
@@ -47,8 +47,10 @@ const Icon = styled.svg`
 `;
 
 function Category() {
-    const [position, setPosition] = useState(0);
     const scrollBar = useRef();
+    const [position, setPosition] = useState(0);
+    const [scrollSize, setScrollSize] = useState(0);
+    const arr = Array.from({ length: 30 });
 
     const rightClick = () => {
         scrollBar.current.scrollTo({
@@ -59,9 +61,22 @@ function Category() {
         setPosition((currentState) => currentState + 80);
     };
 
+    const leftClick = () => {
+        if (position < 0) {
+            setPosition(0);
+        } else {
+            setPosition((currentState) => currentState - 80);
+        }
+
+        scrollBar.current.scrollTo({
+            left: position - 80,
+            behavior: "smooth",
+        });
+    };
+
     return (
         <CategoryWrap>
-            <Button radius="50%" height="30px" width="30px">
+            <Button onClick={leftClick} radius="50%" height="30px" width="30px">
                 <Icon
                     viewBox="0 0 32 32"
                     display="block"
@@ -82,82 +97,13 @@ function Category() {
                     title="인기 급상승"
                     src="https://a0.muscache.com/pictures/3726d94b-534a-42b8-bca0-a0304d912260.jpg"
                 />
-                <CategoryItem
-                    title="해변 바로 앞"
-                    src="https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg"
-                />
-                <CategoryItem
-                    title="해변 바로 앞"
-                    src="https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg"
-                />
-                <CategoryItem
-                    title="해변 바로 앞"
-                    src="https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg"
-                />
-                <CategoryItem
-                    title="해변 바로 앞"
-                    src="https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg"
-                />
-                <CategoryItem
-                    title="해변 바로 앞"
-                    src="https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg"
-                />
-                <CategoryItem
-                    title="해변 바로 앞"
-                    src="https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg"
-                />
-                <CategoryItem
-                    title="해변 바로 앞"
-                    src="https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg"
-                />
-                <CategoryItem
-                    title="해변 바로 앞"
-                    src="https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg"
-                />
-                <CategoryItem
-                    title="해변 바로 앞"
-                    src="https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg"
-                />
-                <CategoryItem
-                    title="해변 바로 앞"
-                    src="https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg"
-                />
-                <CategoryItem
-                    title="해변 바로 앞"
-                    src="https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg"
-                />
-                <CategoryItem
-                    title="해변 바로 앞"
-                    src="https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg"
-                />
-                <CategoryItem
-                    title="해변 바로 앞"
-                    src="https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg"
-                />
-                <CategoryItem
-                    title="해변 바로 앞"
-                    src="https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg"
-                />
-                <CategoryItem
-                    title="해변 바로 앞"
-                    src="https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg"
-                />
-                <CategoryItem
-                    title="해변 바로 앞"
-                    src="https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg"
-                />
-                <CategoryItem
-                    title="해변 바로 앞"
-                    src="https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg"
-                />
-                <CategoryItem
-                    title="해변 바로 앞"
-                    src="https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg"
-                />
-                <CategoryItem
-                    title="해변 바로 앞"
-                    src="https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg"
-                />
+                {arr.map((i, idx) => (
+                    <CategoryItem
+                        key={idx.toString()}
+                        title="해변 바로 앞"
+                        src="https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg"
+                    />
+                ))}
 
                 <CategoryItem
                     title="test"

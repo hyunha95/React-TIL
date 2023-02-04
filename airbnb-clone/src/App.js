@@ -1,14 +1,15 @@
 import React from "react";
 
-import Category from "./layout/Category";
 import Header from "./layout/Header";
+import Category from "./layout/Category";
+import MainList from "./components/MainList";
 
 function App() {
     return (
         <>
             <Header />
-            <hr />
-            <Category />
+
+            <MainList />
         </>
     );
 }
